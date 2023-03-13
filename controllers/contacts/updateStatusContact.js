@@ -1,14 +1,9 @@
 const { Contact } = require("../../models");
 const { NotFound } = require("http-errors");
-const { updateFavoriteSchema } = require("../../models/contact");
+const { updateFavoriteSchema } = require("../../schemas");
 
 const updateStatusContact = async (req, res) => {
-  if (!req.body) {
-    const error = new Error(`missing fields`);
-    error.status = 400;
-    throw error;
-  }
-  const { error } = updateFavoriteSchema.validate(req.body);
+   const { error } = updateFavoriteSchema.validate(req.body);
   if (error) {
     error.message = "missing required name field";
     error.status = 400;

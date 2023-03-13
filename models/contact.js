@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const Joi = require("joi");
 
 const isPhoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/;
 
@@ -26,17 +25,9 @@ const contactSchema = Schema(
   { versionKey: false, timestamps: true }
 );
 
-const joiSchema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().email().required(),
-  phone: Joi.string().regex(isPhoneRegex).required(),
-  favorite: Joi.bool(),
-});
-
-const updateFavoriteSchema = Joi.object({
-  favorite: Joi.bool().required(),
-});
 
 const Contact = model("contact", contactSchema);
 
-module.exports = { Contact, joiSchema, updateFavoriteSchema };
+module.exports = { Contact };
+  
+

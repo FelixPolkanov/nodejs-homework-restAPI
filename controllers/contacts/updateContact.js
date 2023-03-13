@@ -1,14 +1,9 @@
 const { Contact } = require("../../models");
 const { NotFound } = require("http-errors");
-const { joiSchema } = require("../../models/contact");
+const { joiSchema } = require("../../schemas");
 
 const updateContact = async (req, res) => {
-  if (!req.body) {
-    const error = new Error(`missing fields`);
-    error.status = 400;
-    throw error;
-  }
-  const { error } = joiSchema.validate(req.body);
+    const { error } = joiSchema.validate(req.body);
   if (error) {
     error.message = "missing required name field";
     error.status = 400;

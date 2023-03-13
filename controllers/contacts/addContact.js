@@ -1,13 +1,13 @@
+
+const { NotFound } = require("http-errors");
 const { Contact } = require("../../models");
-const { joiSchema } = require("../../models/contact");
+const { joiSchema } = require("../../schemas");
 
 const addContact = async (req, res) => {
   const { error } = joiSchema.validate(req.body);
   if (error) {
-    error.message = "missing required name field";
-    error.status = 400;
-    throw error;
-  }
+    throw new NotFound(`missing required name field`);
+    }
   const result = await Contact.create(req.body);
   res.status(201).json({
     status: "success",

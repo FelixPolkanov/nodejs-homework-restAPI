@@ -1,3 +1,3 @@
-const {joiSchema, updateFavoriteSchema}=require("./joiSchemas")
+const {joiSchema, updateFavoriteSchema, joiRegisterSchema, joiLoginSchema}=require("./joiSchemas")
 
-module.exports = {joiSchema, updateFavoriteSchema};
+module.exports = {joiSchema, updateFavoriteSchema, joiRegisterSchema, joiLoginSchema};

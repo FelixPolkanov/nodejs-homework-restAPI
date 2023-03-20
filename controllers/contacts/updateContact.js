@@ -3,7 +3,7 @@ const { NotFound } = require("http-errors");
 const { joiSchema } = require("../../schemas");
 
 const updateContact = async (req, res) => {
-    const { error } = joiSchema.validate(req.body);
+  const { error } = joiSchema.validate(req.body);
   if (error) {
     error.message = "missing required name field";
     error.status = 400;

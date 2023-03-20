@@ -1,10 +1,9 @@
-const { Unauthorized, NotFound } = require("http-errors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { Unauthorized, NotFound } = require("http-errors");
 
 const { User } = require("../../models");
 const { joiLoginSchema } = require("../../schemas");
-
 
 const login = async (req, res) => {
   const { error } = joiLoginSchema.validate(req.body);
@@ -24,11 +23,12 @@ const login = async (req, res) => {
     id: user._id,
   };
   const token = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: "24h" });
+  await User.findByIdAndUpdate(user._id, { token });
   res.json({
     status: "success",
     code: 200,
     data: {
-      token
+      token,
     },
   });
 };

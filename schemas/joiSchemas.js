@@ -16,10 +16,9 @@ const updateFavoriteSchema = Joi.object({
 
 const joiRegisterSchema = Joi.object({
   name: Joi.string().required(),
-   password: Joi.string().min(6).required(),
+  password: Joi.string().min(6).required(),
   email: Joi.string().pattern(emailRegex).required(),
-  // subscription: Joi.string(),
-  // token: Joi.string(),
+  token: Joi.string(),
 });
 
 const joiLoginSchema = Joi.object({
@@ -27,5 +26,9 @@ const joiLoginSchema = Joi.object({
   email: Joi.string().pattern(emailRegex).required(),
 });
 
-
-module.exports = {joiSchema, updateFavoriteSchema, joiRegisterSchema, joiLoginSchema};
+module.exports = {
+  joiSchema,
+  updateFavoriteSchema,
+  joiRegisterSchema,
+  joiLoginSchema,
+};

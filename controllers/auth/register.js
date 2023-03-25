@@ -2,14 +2,9 @@ const bcrypt = require("bcryptjs");
 const gravatar = require("gravatar");
 
 const { User } = require("../../models");
-const { Conflict, NotFound } = require("http-errors");
-const { joiRegisterSchema } = require("../../schemas");
+const { Conflict} = require("http-errors");
 
 const register = async (req, res) => {
-  const { error } = joiRegisterSchema.validate(req.body);
-  if (error) {
-    throw new NotFound(`missing required name field`);
-  }
   const { name, email, password } = req.body;
   const user = await User.findOne({ email });
   if (user) {

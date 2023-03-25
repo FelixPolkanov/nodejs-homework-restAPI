@@ -1,12 +1,12 @@
 const {
-  joiSchema,
+  joiSchemaContacts,
   updateFavoriteSchema,
   joiRegisterSchema,
   joiLoginSchema,
 } = require("./joiSchemas");
 
 module.exports = {
-  joiSchema,
+  joiSchemaContacts,
   updateFavoriteSchema,
   joiRegisterSchema,
   joiLoginSchema,

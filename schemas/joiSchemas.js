@@ -1,9 +1,9 @@
 const Joi = require("joi");
 
-const isPhoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/;
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const isPhoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/;
 
-const joiSchema = Joi.object({
+const joiSchemaContacts = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().email().required(),
   phone: Joi.string().regex(isPhoneRegex).required(),
@@ -27,7 +27,7 @@ const joiLoginSchema = Joi.object({
 });
 
 module.exports = {
-  joiSchema,
+  joiSchemaContacts,
   updateFavoriteSchema,
   joiRegisterSchema,
   joiLoginSchema,

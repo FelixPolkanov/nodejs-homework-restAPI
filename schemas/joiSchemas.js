@@ -26,9 +26,14 @@ const joiLoginSchema = Joi.object({
   email: Joi.string().pattern(emailRegex).required(),
 });
 
+const joiVerifyEmailSchema = Joi.object({
+  email: Joi.string().pattern(emailRegex).required(),
+});
+
 module.exports = {
   joiSchemaContacts,
   updateFavoriteSchema,
   joiRegisterSchema,
   joiLoginSchema,
+  joiVerifyEmailSchema,
 };
